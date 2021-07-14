@@ -1,13 +1,13 @@
 {
   "name": "postinstall-node-version-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Logs a message on postinstall if the Node.js version being used is not supported.",
   "main": "dist/index.js",
   "bin": {
     "postinstall-node-version-check": "dist/index.js"
   },
   "scripts": {
-    "prepublish": "tsc",
+    "prepublishOnly": "tsc",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
