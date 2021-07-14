@@ -1,12 +1,14 @@
 {
   "name": "postinstall-node-version-check",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Logs a message on postinstall if the Node.js version being used is not supported.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "bin": {
-    "postinstall-node-version-check": "src/index.js"
+    "postinstall-node-version-check": "dist/index.js"
   },
   "scripts": {
+    "prepublish": "tsc",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/trivikr/postinstall-node-version-check/issues"
   },
-  "homepage": "https://github.com/trivikr/postinstall-node-version-check#readme"
+  "homepage": "https://github.com/trivikr/postinstall-node-version-check#readme",
+  "devDependencies": {
+    "typescript": "4.3.5"
+  }
 }
