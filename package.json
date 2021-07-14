@@ -1,0 +1,26 @@
+{
+  "name": "postinstall-node-version-check",
+  "version": "0.0.1",
+  "description": "Logs a message on postinstall if the Node.js version being used is not supported.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trivikr/postinstall-node-version-check.git"
+  },
+  "keywords": [
+    "node",
+    "version",
+    "deprecation",
+    "warning",
+    "postinstall"
+  ],
+  "author": "Kamat, Trivikram",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trivikr/postinstall-node-version-check/issues"
+  },
+  "homepage": "https://github.com/trivikr/postinstall-node-version-check#readme"
+}
