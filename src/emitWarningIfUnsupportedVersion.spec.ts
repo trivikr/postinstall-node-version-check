@@ -43,5 +43,19 @@ describe(emitWarningIfUnsupportedVersion.name, () => {
     });
   });
 
-  describe(`emits no warning for Node.js >=${supportedVersion}`, () => {});
+  describe(`emits no warning for Node.js >=${supportedVersion}`, () => {
+    const [major, minor, patch] = supportedVersion.split(".").map(Number);
+    it.each(
+      [
+        [major, minor, patch],
+        [major, minor, patch + 1],
+        [major, minor + 1, 0],
+        [major + 1, 0, 0],
+      ].map((arr) => `v${arr.join(".")}`)
+    )(`%s`, async (unsupportedVersion) => {
+      process.emitWarning = jest.fn();
+      emitWarningIfUnsupportedVersion(unsupportedVersion);
+      expect(process.emitWarning).not.toHaveBeenCalled();
+    });
+  });
 });
