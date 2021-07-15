@@ -1,7 +1,13 @@
 import { emitWarningIfUnsupportedVersion } from "./emitWarningIfUnsupportedVersion";
 
 describe(emitWarningIfUnsupportedVersion.name, () => {
+  const emitWarning = process.emitWarning;
   const supportedVersion = "10.0.0";
+
+  afterEach(() => {
+    jest.clearAllMocks();
+    process.emitWarning = emitWarning;
+  });
 
   describe(`emits warning for Node.js <${supportedVersion}`, () => {
     const getPreviousMajorVersion = (major: number) =>
@@ -27,10 +33,9 @@ describe(emitWarningIfUnsupportedVersion.name, () => {
         [getPreviousMajorVersion(major), 0, 0],
       ].map((arr) => `v${arr.join(".")}`)
     )(`%s`, async (unsupportedVersion) => {
-      const spy = jest.spyOn(process, "emitWarning");
+      process.emitWarning = jest.fn();
       emitWarningIfUnsupportedVersion(unsupportedVersion);
-      expect(spy).toHaveBeenCalledTimes(1);
-      spy.mockRestore();
+      expect(process.emitWarning).toHaveBeenCalledTimes(1);
     });
   });
 
