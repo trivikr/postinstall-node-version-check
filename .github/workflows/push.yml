@@ -1,4 +1,4 @@
-name: npm-publish
+name: push
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   version-bump:
-    name: version-bump
+    name: "Automated Version Bump"
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
@@ -15,7 +15,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   npm-publish:
-    name: npm-publish
+    name: "Npm Publish"
+    needs: version-bump
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
