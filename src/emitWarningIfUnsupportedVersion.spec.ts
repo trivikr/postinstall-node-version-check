@@ -36,6 +36,10 @@ describe(emitWarningIfUnsupportedVersion.name, () => {
       process.emitWarning = jest.fn();
       emitWarningIfUnsupportedVersion(unsupportedVersion);
       expect(process.emitWarning).toHaveBeenCalledTimes(1);
+      expect(process.emitWarning).toHaveBeenCalledWith(
+        `The Node.js ${unsupportedVersion} is not supported.`,
+        `NodeDeprecationWarning`
+      );
     });
   });
 
