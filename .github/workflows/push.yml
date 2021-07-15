@@ -5,22 +5,17 @@ on:
     branches: [main]
 
 jobs:
-  version-bump:
-    name: "Automated Version Bump"
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v2
-      - uses: phips28/gh-action-bump-version@v8.3.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   npm-publish:
-    name: "Npm Publish"
+    name: "npm publish"
     needs: version-bump
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
+      - uses: phips28/gh-action-bump-version@v8.3.1
+        name: "Automated Version Bump"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v1
         with:
           node-version: 14
