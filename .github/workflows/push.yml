@@ -1,4 +1,4 @@
-name: npm-publish
+name: push
 
 on:
   push:
@@ -6,11 +6,15 @@ on:
 
 jobs:
   npm-publish:
-    name: npm-publish
+    name: "npm publish"
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
+      - uses: phips28/gh-action-bump-version@v8.3.1
+        name: "Automated Version Bump"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v1
         with:
           node-version: 14
