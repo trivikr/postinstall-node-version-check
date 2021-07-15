@@ -23,8 +23,8 @@ Logs a message on postinstall if the Node.js version being used is not supported
 
 ## Output
 
-The following message will be logged on postinstall on unsupported Node.js versions:
+The following message will be logged on postinstall on unsupported Node.js version vX.Y.Z:
 
 ```console
-The Node.js version vX.Y.Z is no longer supported.
+(node:<LINE_NUMEBR>) NodeDeprecationWarning: The Node.js version vX.Y.Z is no longer supported.
 ```
