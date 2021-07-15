@@ -16,7 +16,7 @@ Logs a message on postinstall if the Node.js version being used is not supported
     //...
     "scripts": {
       //...
-      "postinstall": "npm run postinstall-node-version-check"
+      "postinstall": "postinstall-node-version-check"
     }
   }
   ```
