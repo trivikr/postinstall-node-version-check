@@ -1,6 +1,6 @@
 # postinstall-node-version-check
 
-Logs a message on postinstall if the Node.js version being used is not supported.
+Emits warning on postinstall if the Node.js version being used is not supported.
 
 ## Usage
 
