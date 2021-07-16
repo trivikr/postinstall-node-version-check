@@ -4,7 +4,8 @@
   "description": "Logs a message on postinstall if the Node.js version being used is not supported.",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "!dist/*.spec.js"
   ],
   "bin": {
     "postinstall-node-version-check": "dist/index.js"
