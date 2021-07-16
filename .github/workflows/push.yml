@@ -17,6 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag-prefix: "v"
+          patch-wording: "chore,fix"
       - uses: actions/setup-node@v1
         with:
           node-version: 14
