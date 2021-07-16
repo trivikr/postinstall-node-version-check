@@ -8,5 +8,11 @@ const argv = yargs(hideBin(process.argv)).options({
   },
 }).argv;
 
-import { emitWarningIfUnsupportedVersion } from "./emitWarningIfUnsupportedVersion";
-emitWarningIfUnsupportedVersion(process.version);
+import { satisfies } from "semver";
+
+if (!satisfies(process.version, ">=10.0.0")) {
+  process.emitWarning(
+    `The Node.js ${process.version} is not supported.`,
+    `NodeDeprecationWarning`
+  );
+}
