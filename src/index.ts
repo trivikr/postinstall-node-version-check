@@ -1,18 +1,21 @@
 #!/usr/bin/env node
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
+import { satisfies } from "semver";
 
-const argv = yargs(hideBin(process.argv)).options({
+const { supportedVersions } = yargs(hideBin(process.argv)).options({
   supportedVersions: {
-    describe: "The versions of the supported platforms",
+    alias: "s",
+    describe: "The semver range of supported Node.js versions",
+    type: "string",
+    demandOption: true,
   },
 }).argv;
 
-import { satisfies } from "semver";
-
-if (!satisfies(process.version, ">=10.0.0")) {
+if (!satisfies(process.version, supportedVersions)) {
   process.emitWarning(
-    `The Node.js ${process.version} is not supported.`,
-    `NodeDeprecationWarning`
+    `The Node.js ${process.version} is not supported.` +
+      ` Please use "${supportedVersions}".`,
+    `NodeVersionUnsupportedWarning`
   );
 }
