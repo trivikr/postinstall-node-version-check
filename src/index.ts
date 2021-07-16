@@ -6,10 +6,13 @@ import { satisfies } from "semver";
 const { supportedVersions } = yargs(hideBin(process.argv))
   .usage(
     "Emits warning on postinstall if the Node.js version being used is not supported.\n\n" +
-      "Usage:\n" +
-      "  $0\n" +
-      "    --supportedVersions <string>"
+      "Usage: $0 [options]"
   )
+  .example([
+    [`$0 --supportedVersions "10.x"`],
+    [`$0 --supportedVersions "10.0.0"`],
+    [`$0 --supportedVersions ">=10.0.0 <15"`],
+  ])
   .options({
     supportedVersions: {
       alias: "s",
